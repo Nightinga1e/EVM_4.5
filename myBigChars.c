@@ -1,5 +1,11 @@
 #include "myBigChars.h"
 
+int bc_printA (char * str)
+{
+	printf("\E(0%s", str);
+	printf("\E(B");
+}
+
 void bc_bigcharLayout(int64_t *A, int number)
 {
   number = number%16;
@@ -137,9 +143,9 @@ int bc_printbigchar(int64_t big, int x, int y, enum colors clr1, enum colors clr
     for(int j = 0; j < 8; j++)
     {
       if(big % 2)
-        printf("\u2588");
+	bc_printA("\u2588");
       else
-        printf(" ");
+        bc_printA(" ");
       big = big >> 1;
       mt_gotoXY(x, y+j+1);
     }
@@ -171,25 +177,25 @@ int bc_box(int x1, int y1, int x2, int y2)
   printf("\u250C");
   for(int i = 0; i < x2-x1; i++)
   {
-    printf("\u2500");
+   bc_printA("\u2500");
   }
-  printf("\u2510");
+  bc_printA("\u2510");
 
   for(int i = 0; i < y2-y1; i++) //leftright
   {
     mt_gotoXY(y1+i+1, x1);
-    printf("\u2502");
+    bc_printA("\u2502");
     mt_gotoXY(y1+i+1, x2+1);
-    printf("\u2502");
+    bc_printA("\u2502");
   }
 
   mt_gotoXY(y2+1, x1); //lower
-  printf("\u2514");
+  bc_printA("\u2514");
   for(int i = 0; i < x2-x1; i++)
   {
-    printf("\u2500");
+    bc_printA("\u2500");
   }
-  printf("\u2518");
+  bc_printA("\u2518");
 }
 
 int bc_bigcharwrite(int64_t *container, int count)

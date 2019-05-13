@@ -7,13 +7,13 @@
 #include <inttypes.h>
 #include <fcntl.h>
 
-void bc_bigcharLayoutSTR(int64_t *, char *);
-void bc_bigcharLayout(int64_t *, int);
+void bc_bigcharLayout(int*, int);
+int bc_printA (char* str);
 int bc_box(int, int, int, int);
-int bc_printbigchar(int64_t, int, int, enum colors, enum colors);
-int bc_setbigcharpos(int64_t*, int64_t, int64_t, int);
-int bc_getbigcharpos(int64_t, int, int, int*);
-int bc_bigcharwrite(int64_t*, int);
-int bc_bigcharread(int64_t*, int, int*);
+int bc_printbigchar(int*, int, int, enum colors, enum colors);
+int bc_setbigcharpos(int *big, int x, int y, int value);
+int bc_getbigcharpos(int *big, int x, int y, int *value);
+int bc_bigcharwrite(int fd, int * big, int count);
+int bc_bigcharread(int fd, int * big, int need_count, int *count);
 
 #endif

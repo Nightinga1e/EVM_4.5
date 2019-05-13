@@ -16,7 +16,7 @@
 
 int ram[SIZE];
 int flags;
-int memoryPointer;
+int Pointer;
 
 void errorHandler(int);
 int sc_memoryInit();
